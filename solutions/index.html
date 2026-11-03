@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>产品与解决方案 — 企业智能自动化工作室</title>
+  <meta name="description" content="六大产品覆盖企业自动化的关键环节：AI 客服、评论截流、GEO 品牌诊断、数据清洗、知识库问答与定制自动化。" />
+</head>
+<body>
+  <header class="site-header" data-header></header>
+
+  <section class="detail-hero">
+    <div class="container">
+      <span class="badge badge-info"><span class="badge-dot"></span>产品与解决方案</span>
+      <h1>六大产品，按需组合</h1>
+      <p class="detail-sub">从客户接待到数据处理，从知识问答到流程自动化，找到适合你业务的切入点。</p>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="container">
+      <div class="grid grid-3" id="solution-grid"></div>
+    </div>
+  </section>
+
+  <section class="section section-alt">
+    <div class="container">
+      <div class="cta-banner">
+        <div class="inner">
+          <h2>不确定从哪里开始？</h2>
+          <p>告诉我们你现在最头疼的业务环节，我们帮你判断哪些环节值得自动化。</p>
+          <div class="actions">
+            <a class="btn btn-primary btn-lg" href="../contact/" style="background:#fff;color:var(--navy-900)">沟通业务需求</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <footer class="site-footer" data-footer></footer>
+
+  <script type="module" src="/src/main.js"></script>
+  <script type="module">
+    import { products } from '/src/data/products.js'
+    import { icon } from '/src/icons.js'
+    document.getElementById('solution-grid').innerHTML = products.map((p) => `
+      <div class="product-card">
+        <div class="prod-icon">${icon(p.icon)}</div>
+        <h3>${p.name}</h3>
+        <p class="prod-problem">${p.problem}</p>
+        <ul>${p.capabilities.map((c) => `<li>${c}</li>`).join('')}</ul>
+        <div class="prod-actions">
+          <a class="btn btn-primary" href="../solutions/${p.slug}.html">了解详情</a>
+          <a class="btn btn-ghost" href="../${p.demoRoute}">体验演示</a>
+        </div>
+      </div>
+    `).join('')
+  </script>
+</body>
+</html>

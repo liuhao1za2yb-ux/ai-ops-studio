@@ -1,0 +1,15 @@
+{
+  "name": "enterprise-ai-automation-site",
+  "version": "1.0.0",
+  "private": true,
+  "description": "企业智能自动化工作室 — 高端企业 AI 自动化官网与交互式产品演示中心",
+  "type": "module",
+  "scripts": {
+    "dev": "vite",
+    "build": "vite build",
+    "preview": "vite preview"
+  },
+  "devDependencies": {
+    "vite": "^5.4.10"
+  }
+}

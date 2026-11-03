@@ -1,0 +1,680 @@
+/* ============================================================
+   交互演示模块样式
+   ============================================================ */
+
+/* 聊天窗口 */
+.chat-window {
+  height: 320px;
+  overflow-y: auto;
+  background: var(--slate-100);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-md);
+  padding: var(--sp-4);
+  display: flex;
+  flex-direction: column;
+  gap: var(--sp-3);
+}
+.chat-window .msg {
+  display: flex;
+  flex-direction: column;
+}
+.chat-window .msg-row {
+  font-size: var(--fs-sm);
+  display: flex;
+  align-items: flex-start;
+  gap: 0.5rem;
+  max-width: 88%;
+  padding: 0;
+  border-radius: 0;
+  background: none;
+}
+.chat-window .msg-row .msg-bubble {
+  padding: 0.6rem 0.8rem;
+  border-radius: var(--radius-md);
+  line-height: 1.6;
+  white-space: pre-wrap;
+  word-break: break-word;
+  flex: 1;
+  min-width: 0;
+}
+.chat-window .msg-in {
+  align-self: flex-start;
+  background: none;
+  color: var(--text);
+}
+.chat-window .msg-in .msg-bubble {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  color: var(--text);
+  border-top-left-radius: 4px;
+}
+.chat-window .msg-out {
+  align-self: flex-end;
+  flex-direction: row-reverse;
+  background: none;
+  color: var(--navy-800);
+}
+.chat-window .msg-out .msg-bubble {
+  background: var(--blue-50);
+  border: 1px solid var(--blue-100);
+  color: var(--navy-800);
+  border-top-right-radius: 4px;
+}
+/* 客服/用户头像 */
+.chat-avatar {
+  flex: none;
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  margin-top: 2px;
+}
+.chat-avatar svg {
+  width: 18px;
+  height: 18px;
+}
+.chat-avatar-agent {
+  background: linear-gradient(135deg, var(--blue-500), var(--blue-600));
+  color: #fff;
+}
+.chat-avatar-user {
+  background: var(--slate-200);
+  color: var(--navy-600);
+}
+.chat-meta {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--sp-2);
+  align-items: center;
+  margin-top: var(--sp-2);
+}
+.chat-src {
+  font-size: var(--fs-xs);
+  color: var(--text-subtle);
+}
+.chat-form {
+  display: flex;
+  gap: var(--sp-2);
+  margin-top: var(--sp-3);
+}
+.chat-input {
+  flex: 1;
+  font-family: inherit;
+  font-size: var(--fs-sm);
+  padding: 0.7rem 0.9rem;
+  border: 1px solid var(--border-strong);
+  border-radius: var(--radius-md);
+  background: var(--surface);
+  color: var(--text);
+}
+.chat-input:focus {
+  outline: none;
+  border-color: var(--primary);
+  box-shadow: 0 0 0 3px var(--blue-100);
+}
+.chat-record {
+  margin-top: var(--sp-4);
+  border-top: 1px dashed var(--border-strong);
+  padding-top: var(--sp-4);
+}
+.chat-record h4 {
+  font-size: var(--fs-sm);
+  color: var(--navy-800);
+  margin-bottom: var(--sp-3);
+}
+.record-item {
+  font-size: var(--fs-sm);
+  color: var(--text-muted);
+  padding: 0.4rem 0;
+  border-bottom: 1px solid var(--slate-100);
+}
+.record-empty,
+.clean-empty {
+  font-size: var(--fs-sm);
+  color: var(--text-subtle);
+  padding: var(--sp-4) 0;
+}
+
+/* 清洗结果 */
+.metric-row {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: var(--sp-3);
+}
+@media (min-width: 640px) {
+  .metric-row {
+    grid-template-columns: repeat(5, 1fr);
+  }
+}
+.metric-row .metric-card {
+  padding: var(--sp-4);
+}
+.metric-row .metric-value {
+  font-size: var(--fs-2xl);
+}
+
+/* 评论截流筛选 */
+.filter-row {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: var(--sp-3);
+}
+@media (min-width: 640px) {
+  .filter-row {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+.lead-list {
+  display: flex;
+  flex-direction: column;
+  gap: var(--sp-3);
+}
+.lead-card {
+  border: 1px solid var(--border);
+  border-radius: var(--radius-md);
+  padding: var(--sp-4);
+  background: var(--surface);
+  transition: box-shadow var(--dur-med) var(--ease-out), border-color var(--dur-med) var(--ease-out);
+}
+.lead-card:hover {
+  box-shadow: var(--shadow-md);
+  border-color: var(--slate-300);
+}
+.lead-head {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: var(--sp-3);
+  flex-wrap: wrap;
+  margin-bottom: var(--sp-1);
+}
+.lead-head strong {
+  color: var(--navy-900);
+  font-size: var(--fs-base);
+}
+/* 用户头像 + 昵称（仿平台评论区） */
+.lead-user {
+  display: flex;
+  align-items: center;
+  gap: 0.55rem;
+}
+.lead-avatar {
+  flex: none;
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  color: #fff;
+  font-weight: 700;
+  font-size: 15px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  border: 2px solid #fff;
+  box-shadow: 0 0 0 1px var(--border);
+}
+.lead-user-meta {
+  display: flex;
+  flex-direction: column;
+  gap: 0.15rem;
+  align-items: flex-start;
+}
+/* 评论交互区（点赞/回复/收藏） */
+.lead-actions {
+  display: flex;
+  gap: 1rem;
+  margin: 0.35rem 0 0.5rem;
+  font-size: var(--fs-xs);
+  color: var(--text-subtle);
+}
+.lead-action {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.2rem;
+}
+.lead-platform {
+  display: inline-flex;
+  align-items: center;
+  font-size: var(--fs-xs);
+  font-weight: 600;
+  padding: 0.2rem 0.6rem;
+  border-radius: 999px;
+}
+.lead-platform.platform-抖音 {
+  background: #fef2f2;
+  color: #c2410c;
+}
+.lead-platform.platform-小红书 {
+  background: #fdf2f8;
+  color: #be185d;
+}
+.lead-meta {
+  font-size: var(--fs-xs);
+  color: var(--text-subtle);
+  margin-bottom: var(--sp-2);
+}
+.lead-desc {
+  font-size: var(--fs-sm);
+  color: var(--text-muted);
+  margin-bottom: var(--sp-2);
+  line-height: 1.7;
+}
+.lead-tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--sp-2);
+  margin-bottom: var(--sp-2);
+}
+.lead-reason {
+  font-size: var(--fs-xs);
+  color: var(--text-muted);
+  margin-top: var(--sp-1);
+  line-height: 1.6;
+}
+.lead-reason strong {
+  color: var(--navy-800);
+}
+
+/* 评论截流首屏精选卡片 + 折叠 */
+/* 真实截图展示区 */
+.lead-shot-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: var(--sp-4);
+}
+@media (min-width: 720px) {
+  .lead-shot-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+.lead-shot {
+  margin: 0;
+  border: 1px solid var(--border);
+  border-radius: var(--radius-md);
+  overflow: hidden;
+  background: var(--surface);
+}
+.lead-shot img {
+  display: block;
+  width: 100%;
+  height: 360px;
+  object-fit: cover;
+  object-position: top;
+}
+.lead-shot figcaption {
+  padding: var(--sp-2) var(--sp-3);
+  font-size: var(--fs-xs);
+  color: var(--text-muted);
+  text-align: center;
+  background: var(--slate-50);
+}
+.lead-featured {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: var(--sp-3);
+}
+@media (min-width: 720px) {
+  .lead-featured {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+.lead-featured-card {
+  border-left: 3px solid var(--blue-500);
+}
+.lead-expand-toggle {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--sp-2);
+}
+.lead-expand-icon {
+  width: 16px;
+  height: 16px;
+  transition: transform 0.2s ease;
+}
+.lead-expand-toggle[aria-expanded="true"] .lead-expand-icon {
+  transform: rotate(45deg);
+}
+.lead-filter-panel {
+  border-top: 1px dashed var(--border-strong);
+  margin-top: var(--sp-3);
+  padding-top: var(--sp-3);
+}
+
+/* 知识库 */
+.kb-chips {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--sp-2);
+}
+.kb-chip {
+  font-family: inherit;
+  font-size: var(--fs-sm);
+  padding: 0.45rem 0.8rem;
+  border: 1px solid var(--border-strong);
+  border-radius: 999px;
+  background: var(--surface);
+  color: var(--navy-800);
+  cursor: pointer;
+  transition: background-color 0.15s ease, border-color 0.15s ease;
+}
+.kb-chip:hover {
+  background: var(--blue-50);
+  border-color: var(--primary);
+}
+.kb-answer-card {
+  border: 1px solid var(--border);
+  border-radius: var(--radius-md);
+  padding: var(--sp-4);
+  background: var(--surface);
+}
+.kb-answer-card.kb-unknown {
+  background: #fff8ec;
+  border-color: #f0d48a;
+}
+.kb-answer-q {
+  font-weight: 600;
+  color: var(--navy-900);
+  margin-bottom: var(--sp-2);
+}
+.kb-answer-a {
+  font-size: var(--fs-sm);
+  color: var(--text-muted);
+  line-height: 1.7;
+  margin-bottom: var(--sp-3);
+}
+.kb-answer-src {
+  display: flex;
+  align-items: center;
+  gap: var(--sp-2);
+  flex-wrap: wrap;
+}
+.kb-src-text {
+  font-size: var(--fs-xs);
+  color: var(--text-subtle);
+}
+
+/* GEO 服务流程图 */
+.geo-flow-figure {
+  margin: 0;
+  border: 1px solid var(--border);
+  border-radius: var(--radius-md);
+  overflow: hidden;
+  background: var(--surface);
+}
+.geo-flow-figure img {
+  display: block;
+  width: 100%;
+  height: auto;
+}
+
+/* 定制自动化流程演示 */
+.custom-flow {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: var(--sp-2);
+}
+.custom-flow-node {
+  width: 100%;
+  max-width: 460px;
+  display: flex;
+  gap: var(--sp-3);
+  align-items: flex-start;
+  border: 1px solid var(--border);
+  border-left: 4px solid var(--blue-500);
+  border-radius: var(--radius-md);
+  padding: var(--sp-4);
+  background: var(--surface);
+}
+.custom-flow-node.custom-flow-input {
+  border-left-color: var(--teal-500);
+}
+.custom-flow-node.custom-flow-process {
+  border-left-color: var(--blue-500);
+}
+.custom-flow-node.custom-flow-approve {
+  border-left-color: #f0a94b;
+}
+.custom-flow-node.custom-flow-output {
+  border-left-color: var(--navy-700);
+}
+.custom-flow-num {
+  flex-shrink: 0;
+  width: 28px;
+  height: 28px;
+  border-radius: 8px;
+  background: var(--slate-100);
+  color: var(--navy-800);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: 700;
+  font-size: var(--fs-sm);
+}
+.custom-flow-body h4 {
+  font-size: var(--fs-base);
+  margin-bottom: var(--sp-1);
+}
+.custom-flow-body p {
+  font-size: var(--fs-sm);
+  color: var(--text-muted);
+}
+.custom-flow-arrow {
+  color: var(--text-subtle);
+  font-size: var(--fs-lg);
+}
+
+/* 定制自动化联系方式引导 */
+.custom-contact {
+  border: 1px solid var(--blue-100);
+  background: linear-gradient(135deg, var(--blue-50), var(--surface));
+  border-radius: var(--radius-lg);
+  padding: var(--sp-5);
+  text-align: center;
+}
+.custom-contact-head {
+  font-size: var(--fs-lg);
+  font-weight: 700;
+  color: var(--navy-900);
+  margin-bottom: var(--sp-2);
+}
+.custom-contact-sub {
+  font-size: var(--fs-sm);
+  color: var(--text-muted);
+  margin-bottom: var(--sp-4);
+}
+.custom-contact-info {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: var(--sp-3);
+}
+.custom-contact-name {
+  font-size: var(--fs-base);
+  font-weight: 600;
+  color: var(--navy-800);
+}
+
+/* 客服快捷建议（澄清流程） */
+.chat-suggest-row {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--sp-2);
+  margin-top: var(--sp-2);
+}
+.chat-suggest {
+  border: 1px solid var(--border-strong);
+  background: var(--surface);
+  color: var(--navy-800);
+  cursor: pointer;
+}
+
+/* CSV 运行前预览 */
+.clean-preview {
+  display: flex;
+  flex-direction: column;
+  gap: var(--sp-2);
+}
+.clean-preview-item {
+  border: 1px solid var(--border);
+  border-left: 3px solid var(--blue-500);
+  border-radius: var(--radius-sm);
+  padding: var(--sp-3) var(--sp-4);
+  background: var(--surface);
+}
+.clean-preview-head {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--sp-2);
+  flex-wrap: wrap;
+  margin-bottom: var(--sp-1);
+}
+.clean-preview-head strong {
+  font-size: var(--fs-sm);
+  color: var(--navy-900);
+}
+.clean-preview-body {
+  font-size: var(--fs-xs);
+  color: var(--text-muted);
+  line-height: 1.7;
+}
+.clean-preview-body code {
+  font-family: var(--font-mono, monospace);
+  background: var(--slate-100);
+  padding: 0.1rem 0.35rem;
+  border-radius: 4px;
+  color: var(--navy-800);
+}
+.cell-break {
+  max-width: 260px;
+  word-break: break-word;
+  line-height: 1.6;
+}
+
+/* GEO 诊断详情展开 / 来源拆解 / 竞争对比 / 可执行建议 */
+.geo-q-item {
+  flex-direction: column;
+  align-items: stretch;
+}
+.geo-q-item .geo-q-text {
+  width: 100%;
+}
+.geo-detail-toggle {
+  align-self: flex-start;
+}
+.geo-q-detail {
+  margin-top: var(--sp-3);
+  padding: var(--sp-3) var(--sp-4);
+  background: var(--slate-50);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-sm);
+  display: flex;
+  flex-direction: column;
+  gap: var(--sp-2);
+}
+.geo-detail-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: var(--sp-2);
+}
+.geo-detail-grid > div {
+  font-size: var(--fs-xs);
+  color: var(--text-muted);
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+.geo-detail-grid strong {
+  color: var(--navy-800);
+}
+.geo-detail-row {
+  font-size: var(--fs-xs);
+  color: var(--text-muted);
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+.geo-detail-row strong {
+  color: var(--navy-800);
+}
+.geo-source-list {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--sp-2);
+}
+.geo-source-item {
+  display: flex;
+  align-items: center;
+  gap: var(--sp-2);
+  border: 1px solid var(--border);
+  border-radius: 999px;
+  padding: 0.35rem 0.9rem;
+  background: var(--surface);
+  font-size: var(--fs-sm);
+}
+.geo-source-name {
+  color: var(--navy-800);
+}
+.geo-source-count {
+  color: var(--primary);
+  font-weight: 600;
+}
+.geo-compare-list {
+  display: flex;
+  flex-direction: column;
+  gap: var(--sp-3);
+}
+.geo-compare-item {
+  border: 1px solid var(--border);
+  border-left: 3px solid var(--navy-700);
+  border-radius: var(--radius-sm);
+  padding: var(--sp-3) var(--sp-4);
+  background: var(--surface);
+  display: flex;
+  flex-direction: column;
+  gap: var(--sp-1);
+}
+.geo-compare-q {
+  font-weight: 600;
+  color: var(--navy-900);
+  margin-bottom: var(--sp-1);
+}
+.geo-compare-row {
+  font-size: var(--fs-xs);
+  color: var(--text-muted);
+  display: flex;
+  gap: var(--sp-2);
+}
+.geo-compare-row strong {
+  flex-shrink: 0;
+  color: var(--navy-800);
+}
+.geo-suggest-list {
+  display: flex;
+  flex-direction: column;
+  gap: var(--sp-3);
+}
+.geo-suggest-item {
+  border: 1px solid var(--border);
+  border-left: 3px solid var(--teal-500);
+  border-radius: var(--radius-sm);
+  padding: var(--sp-3) var(--sp-4);
+  background: var(--surface);
+}
+.geo-suggest-title {
+  font-weight: 600;
+  color: var(--navy-900);
+  margin-bottom: var(--sp-1);
+}
+.geo-suggest-focus {
+  font-size: var(--fs-xs);
+  color: var(--text-muted);
+  margin-bottom: var(--sp-1);
+}
+.geo-suggest-priority {
+  font-size: var(--fs-xs);
+  color: var(--primary);
+  font-weight: 600;
+}

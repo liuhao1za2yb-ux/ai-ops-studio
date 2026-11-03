@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>项目实践 — 企业智能自动化工作室</title>
+  <meta name="description" content="真实实践与模拟场景明确区分，展示项目实践、原型验证、工具实践与模拟演示。" />
+</head>
+<body>
+  <header class="site-header" data-header></header>
+
+  <section class="detail-hero">
+    <div class="container">
+      <span class="badge badge-info"><span class="badge-dot"></span>项目实践</span>
+      <h1>项目实践</h1>
+      <p class="detail-sub">我们做过的自动化项目与原型验证，覆盖美业、客服、数据清洗等场景。</p>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="container">
+      <div class="grid grid-3" id="project-grid"></div>
+    </div>
+  </section>
+
+  <footer class="site-footer" data-footer></footer>
+
+  <script type="module" src="/src/main.js"></script>
+  <script type="module">
+    import { projects } from '/src/data/projects.js'
+    document.getElementById('project-grid').innerHTML = projects.map((p) => `
+      <div class="case-card">
+        <div class="case-media"><img src="../${p.image}" alt="${p.title}" loading="lazy" /></div>
+        <div class="case-meta">
+          <span class="badge ${p.isSimulation ? 'badge-simulation' : 'badge-info'}"><span class="badge-dot"></span>${p.status}</span>
+        </div>
+        <h3>${p.title}</h3>
+        <p>${p.description}</p>
+      </div>
+    `).join('')
+  </script>
+</body>
+</html>

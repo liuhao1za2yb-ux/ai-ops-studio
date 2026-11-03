@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>产品演示中心 — 企业智能自动化工作室</title>
+  <meta name="description" content="六个可直接体验的演示：AI 客服、CSV 数据清洗、社媒评论截流、知识库问答、GEO 诊断、定制自动化。" />
+</head>
+<body>
+  <header class="site-header" data-header></header>
+
+  <section class="detail-hero">
+    <div class="container">
+      <span class="badge badge-info"><span class="badge-dot"></span>产品演示中心</span>
+      <h1>直接体验，无需预约</h1>
+      <p class="detail-sub">六个演示，覆盖客户接待、评论截流、数据清洗、知识问答、GEO 与定制自动化。</p>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="container" style="max-width:900px">
+      <div class="demo-nav mb-6">
+        <a href="#chat" class="btn btn-secondary">AI 客服</a>
+        <a href="#csv" class="btn btn-secondary">CSV 数据清洗</a>
+        <a href="#leads" class="btn btn-secondary">评论截流</a>
+        <a href="#kb" class="btn btn-secondary">知识库问答</a>
+        <a href="#geo" class="btn btn-secondary">GEO 诊断</a>
+        <a href="#custom" class="btn btn-secondary">定制自动化</a>
+      </div>
+
+      <section id="chat" class="demo-section">
+        <div class="section-header">
+          <span class="eyebrow">演示 1</span>
+          <h2 class="title">AI 客服意图识别与回复</h2>
+        </div>
+        <div id="demo-chat"></div>
+      </section>
+
+      <section id="csv" class="demo-section">
+        <div class="section-header">
+          <span class="eyebrow">演示 2</span>
+          <h2 class="title">CSV 数据清洗</h2>
+        </div>
+        <div id="demo-csv"></div>
+      </section>
+
+      <section id="leads" class="demo-section">
+        <div class="section-header">
+          <span class="eyebrow">演示 3</span>
+          <h2 class="title">社媒评论截流</h2>
+        </div>
+        <div id="demo-leads"></div>
+      </section>
+
+      <section id="kb" class="demo-section">
+        <div class="section-header">
+          <span class="eyebrow">演示 4</span>
+          <h2 class="title">企业知识库问答</h2>
+        </div>
+        <div id="demo-kb"></div>
+      </section>
+
+      <section id="geo" class="demo-section">
+        <div class="section-header">
+          <span class="eyebrow">演示 5</span>
+          <h2 class="title">GEO 品牌 AI 搜索可见度诊断</h2>
+        </div>
+        <div id="demo-geo"></div>
+      </section>
+
+      <section id="custom" class="demo-section">
+        <div class="section-header">
+          <span class="eyebrow">演示 6</span>
+          <h2 class="title">企业定制自动化流程</h2>
+        </div>
+        <div id="demo-custom"></div>
+      </section>
+    </div>
+  </section>
+
+  <footer class="site-footer" data-footer></footer>
+
+  <script type="module" src="/src/main.js"></script>
+  <script type="module">
+    import { initChatDemo, initCsvDemo, initLeadsDemo, initKbDemo, initGeoDemo, initCustomDemo } from '/src/demos/demo-controllers.js'
+    initChatDemo(document.getElementById('demo-chat'))
+    initCsvDemo(document.getElementById('demo-csv'))
+    initLeadsDemo(document.getElementById('demo-leads'))
+    initKbDemo(document.getElementById('demo-kb'))
+    initGeoDemo(document.getElementById('demo-geo'))
+    initCustomDemo(document.getElementById('demo-custom'))
+  </script>
+</body>
+</html>
